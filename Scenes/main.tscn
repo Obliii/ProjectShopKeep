@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://cj76riaad0qv4"]
+[gd_scene load_steps=2 format=3 uid="uid://cj76riaad0qv4"]
 
-[node name="Game" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_7bm1a"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("title_screen", "pause_screen", "gameplay_screen", "overlay")]
+script = ExtResource("1_7bm1a")
+title_screen = NodePath("TitleScreen")
+pause_screen = NodePath("PauseScreen")
+gameplay_screen = NodePath("GameplayScreen")
+overlay = NodePath("Overlay")
+
+[node name="TitleScreen" type="Node2D" parent="."]
+
+[node name="PauseScreen" type="Node2D" parent="."]
+
+[node name="GameplayScreen" type="Node2D" parent="."]
+
+[node name="Overlay" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 10
+bus = &"Sound"
