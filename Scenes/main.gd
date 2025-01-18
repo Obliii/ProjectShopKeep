@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var title_screen : Node2D
-@export var pause_screen : Node2D
-@export var gameplay_screen: Node2D
-@export var overlay : Node2D
+@export var main_state_machine : StateMachine
+
+func init_game():
+	pass
