@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7tsadhldfn73"]
+
+[ext_resource type="Script" path="res://Util/Components/PlayerControllerComponent.gd" id="1_0rycc"]
+[ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="2_efg57"]
+[ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="3_griiw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_de877"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+collision_layer = 17
+collision_mask = 161
+motion_mode = 1
+script = ExtResource("1_0rycc")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_de877")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_efg57")
+MAX_HEALTH = 10
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_griiw")
