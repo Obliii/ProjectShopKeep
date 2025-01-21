@@ -11,7 +11,7 @@ func _ready():
 	health = MAX_HEALTH
 	armor = BASE_ARMOR
 
-func deal_damage(value, ap_value):
+func take_damage(value, ap_value):
 	var damage_value = value
 	var armor_value = armor
 	
@@ -25,7 +25,7 @@ func deal_damage(value, ap_value):
 	health - damage_value
 	emit_signal("health_changed")
 
-func deal_flat_damage(value):
+func take_flat_damage(value):
 	health -= value
 	emit_signal("health_changed")
 

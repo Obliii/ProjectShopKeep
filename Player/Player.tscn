@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7tsadhldfn73"]
+
+[ext_resource type="Script" path="res://Util/Components/PlayerControllerComponent.gd" id="1_0rycc"]
+[ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="2_efg57"]
+[ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="3_78r04"]
+[ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="3_griiw"]
+[ext_resource type="Texture2D" uid="uid://de2smfch6hec0" path="res://Art/lizord.png" id="5_6o1b6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75t3x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_de877"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v48w8"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("move_component", "animated_sprite", "character_body")]
+process_mode = 1
+collision_layer = 19
+collision_mask = 161
+motion_mode = 1
+script = ExtResource("1_0rycc")
+move_component = NodePath("MoveComponent")
+animated_sprite = NodePath("PlayerControllerComponent/AnimatedSprite2D")
+character_body = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_75t3x")
+
+[node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("move_component", "animated_sprite", "character_body")]
+script = ExtResource("1_0rycc")
+move_component = NodePath("../MoveComponent")
+animated_sprite = NodePath("AnimatedSprite2D")
+character_body = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerControllerComponent"]
+sprite_frames = SubResource("SpriteFrames_de877")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_efg57")
+MAX_HEALTH = 10
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_78r04")
+entity = NodePath("..")
+base_speed = 150
+dash_multiplier = 4
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 96
+collision_mask = 96
+script = ExtResource("3_griiw")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_v48w8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("5_6o1b6")
+
+[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]
