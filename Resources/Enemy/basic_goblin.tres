@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://dfg7xrv4s6bnd"]
+
+[ext_resource type="Script" path="res://Util/Enemy/enemy_stats.gd" id="1_st4b5"]
+[ext_resource type="Texture2D" uid="uid://de2smfch6hec0" path="res://Art/lizord.png" id="2_e2hij"]
+
+[resource]
+script = ExtResource("1_st4b5")
+texture = ExtResource("2_e2hij")
+max_health = 10.0
+max_speed = 70.0
+variation_range = 10.0
+acceleration_time = 2.5
+friction = 1.0
