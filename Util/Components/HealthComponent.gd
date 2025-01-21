@@ -3,6 +3,7 @@ class_name HealthComponent
 
 @export var MAX_HEALTH: int
 @export var BASE_ARMOR: int
+
 var health: int
 var armor: int
 signal health_changed

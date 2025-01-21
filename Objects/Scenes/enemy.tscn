@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvr2mp0h3ex8q"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/Enemy/enemy.gd" id="1_bfltn"]
+[ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="2_0fh7r"]
+[ext_resource type="Resource" uid="uid://dfg7xrv4s6bnd" path="res://Resources/Enemy/basic_goblin.tres" id="2_m8xiw"]
+[ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="3_cmuor"]
+[ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="4_cndou"]
+[ext_resource type="Texture2D" uid="uid://de2smfch6hec0" path="res://Art/lizord.png" id="5_8avre"]
+[ext_resource type="Script" path="res://Util/Components/AIComponent.gd" id="7_wua5t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lp263"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_bfltn")
+stats = ExtResource("2_m8xiw")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("2_0fh7r")
+entity = NodePath("..")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_cmuor")
+
+[node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("move_component")]
+script = ExtResource("7_wua5t")
+move_component = NodePath("../MoveComponent")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_cndou")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_lp263")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lp263")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5_8avre")
+flip_h = true
