@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7tsadhldfn73"]
+[gd_scene load_steps=10 format=3 uid="uid://c7tsadhldfn73"]
 
 [ext_resource type="Script" path="res://Util/Components/PlayerControllerComponent.gd" id="1_0rycc"]
 [ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="2_efg57"]
 [ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="3_78r04"]
 [ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="3_griiw"]
+[ext_resource type="Script" path="res://Util/Components/WeaponComponent.gd" id="4_kjhky"]
 [ext_resource type="Texture2D" uid="uid://de2smfch6hec0" path="res://Art/lizord.png" id="5_6o1b6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75t3x"]
@@ -43,6 +44,9 @@ script = ExtResource("3_78r04")
 entity = NodePath("..")
 base_speed = 150
 dash_multiplier = 4
+
+[node name="WeaponComponent" type="Node" parent="."]
+script = ExtResource("4_kjhky")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 96
