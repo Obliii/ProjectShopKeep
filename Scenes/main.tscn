@@ -1,7 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj76riaad0qv4"]
+[gd_scene load_steps=6 format=3 uid="uid://cj76riaad0qv4"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_7bm1a"]
 [ext_resource type="Script" path="res://Util/Classes/state_machine.gd" id="2_vfmkn"]
+[ext_resource type="Texture2D" uid="uid://ccg623j8o68yc" path="res://Art/floor_tiles-wood.png" id="3_s817h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pry4h"]
+texture = ExtResource("3_s817h")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(3, 2)
+2:0/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+2:4/0 = 0
+2:5/0 = 0
+1:5/0 = 0
+0:5/0 = 0
+0:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nhgkm"]
+sources/1 = SubResource("TileSetAtlasSource_pry4h")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7bm1a")
@@ -26,3 +52,7 @@ bus = &"Music"
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 10
 bus = &"Sound"
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_nhgkm")
+format = 2
