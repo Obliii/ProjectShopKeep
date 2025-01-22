@@ -1,3 +1,0 @@
-This is a test to see if the github webhook is working.
-
-If you can see that this file is committed. The webhook is working.... right?	
