@@ -1,8 +1,8 @@
 extends Node
 class_name WeaponComponent
 
-@export var primary_weapon: Node
-@export var secondary_weapon: Node
+@export var primary_weapon: WeaponData
+@export var secondary_weapon: WeaponData
 
 func fire_primary_weapon(direction: Vector2):
 	pass

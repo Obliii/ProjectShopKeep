@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj76riaad0qv4"]
+[gd_scene load_steps=4 format=3 uid="uid://cj76riaad0qv4"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_7bm1a"]
 [ext_resource type="Script" path="res://Util/Classes/state_machine.gd" id="2_vfmkn"]
+[ext_resource type="PackedScene" uid="uid://c7tsadhldfn73" path="res://Player/Player.tscn" id="3_wq5gf"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7bm1a")
@@ -26,3 +27,6 @@ bus = &"Music"
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 10
 bus = &"Sound"
+
+[node name="Player" parent="." instance=ExtResource("3_wq5gf")]
+position = Vector2(224, 287)
