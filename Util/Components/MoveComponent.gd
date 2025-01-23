@@ -1,7 +1,7 @@
 extends Node
 class_name MoveComponent
 
-@export var entity: CharacterBody2D
+@export var entity: PhysicsBody2D
 @export var base_speed: int = 100
 
 # Dashing params
@@ -20,7 +20,11 @@ var flip: bool = false:
 			flip = value
 
 func _ready():
+	reset_speed()
+	
+func reset_speed() -> void:
 	speed = base_speed
+
 
 # Moves the player and flips the sprite.
 func move(vector: Vector2, _delta):

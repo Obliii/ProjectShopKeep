@@ -9,8 +9,11 @@ var armor: int
 signal health_changed
 
 func _ready():
-	health = MAX_HEALTH
+	reset_health()
 	armor = BASE_ARMOR
+	
+func reset_health() -> void:
+	health = MAX_HEALTH
 
 # Deals damage to the entity.
 func take_damage(value, ap_value):
