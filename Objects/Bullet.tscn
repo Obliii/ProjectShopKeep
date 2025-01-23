@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5pdn6smfx07d"]
+
+[ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="1_u2d2b"]
+[ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="2_26abk"]
+[ext_resource type="Script" path="res://Util/Components/AttackComponent.gd" id="3_7d682"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f0fh"]
+
+[node name="Bullet" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("1_u2d2b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_8f0fh")
+debug_color = Color(0.85648, 0, 0.0131668, 0.42)
+
+[node name="MoveComponent" type="Node" parent="."]
+script = ExtResource("2_26abk")
+
+[node name="AttackComponent" type="Node" parent="." node_paths=PackedStringArray("move_component", "hitbox_component", "sprite")]
+script = ExtResource("3_7d682")
+move_component = NodePath("../MoveComponent")
+hitbox_component = NodePath("../HitboxComponent")
+sprite = NodePath("../Sprite2D")
