@@ -16,5 +16,6 @@ func show_weapon(value):
 	showing_weapon = value
 	weapon_sprite.visible = value
 
+# TODO: ROTATE CHARACTER TOWARDS PLAYER TO FOLLOW THE MOUSE. No upside down gun.
 func rotate_weapon(direction: Vector2):
 	weapon_sprite.look_at(direction)
