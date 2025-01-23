@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cj76riaad0qv4"]
+[gd_scene load_steps=6 format=4 uid="uid://cj76riaad0qv4"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_7bm1a"]
 [ext_resource type="TileSet" uid="uid://mw3dn8ptcghi" path="res://Util/TileSheet/kobold_motel_tileset.tres" id="2_ofo8u"]
 [ext_resource type="Script" path="res://Util/Classes/state_machine.gd" id="2_vfmkn"]
 [ext_resource type="PackedScene" uid="uid://c7tsadhldfn73" path="res://Player/Player.tscn" id="3_wq5gf"]
+[ext_resource type="AudioStream" uid="uid://dmirb4n07l6rq" path="res://Sound/Title Screen.wav" id="4_y6dbp"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7bm1a")
@@ -25,11 +26,14 @@ script = ExtResource("2_vfmkn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+position_smoothing_enabled = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"Music"
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_y6dbp")
+autoplay = true
 max_polyphony = 10
 bus = &"Sound"
 
