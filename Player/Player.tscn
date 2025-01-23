@@ -1,6 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c7tsadhldfn73"]
 
 [ext_resource type="Script" path="res://Util/Components/PlayerControllerComponent.gd" id="1_0rycc"]
+[ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_o3h8n"]
 [ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="2_efg57"]
 [ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="3_78r04"]
 [ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="3_griiw"]
