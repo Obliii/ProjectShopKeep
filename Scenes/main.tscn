@@ -29,6 +29,7 @@ position = Vector2(576, 324)
 position_smoothing_enabled = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_y6dbp")
 bus = &"Music"
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -38,4 +39,4 @@ max_polyphony = 10
 bus = &"Sound"
 
 [node name="Player" parent="." instance=ExtResource("3_wq5gf")]
-position = Vector2(224, 287)
+position = Vector2(234, 288)
