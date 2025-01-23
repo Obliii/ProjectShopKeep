@@ -16,5 +16,6 @@ func show_weapon(value):
 	showing_weapon = value
 	weapon_sprite.visible = value
 
+# TODO: ROTATE THE PLAYER.
 func rotate_weapon(direction: Vector2):
 	weapon_sprite.look_at(direction)

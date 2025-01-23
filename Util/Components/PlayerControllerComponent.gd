@@ -40,7 +40,7 @@ func activate_ability():
 
 # Causes the entity to have a short burst of speed.
 func dash():
-	if Input.is_action_just_pressed("move_dash") and animation_component.can_animate:
+	if Input.is_action_just_pressed("move_dash") and move_component.can_dash and animation_component.can_animate:
 		move_component.dash()
 		animation_component.start_animation("stab", true, false)
 
