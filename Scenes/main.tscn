@@ -38,4 +38,4 @@ max_polyphony = 10
 bus = &"Sound"
 
 [node name="Player" parent="." instance=ExtResource("3_wq5gf")]
-position = Vector2(224, 287)
+position = Vector2(759, 114)
