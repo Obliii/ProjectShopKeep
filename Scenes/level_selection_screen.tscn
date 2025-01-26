@@ -1,3 +1,85 @@
-[gd_scene format=3 uid="uid://bvcfn578ap3x8"]
+[gd_scene load_steps=3 format=3 uid="uid://bvcfn578ap3x8"]
+
+[ext_resource type="Theme" uid="uid://ccgqjg61ykiio" path="res://knife_project_theme.tres" id="1_1doum"]
+[ext_resource type="Script" path="res://Scenes/Scripts/level_selection_screen.gd" id="1_xy1bg"]
 
 [node name="LevelSelectionScreen" type="CanvasLayer"]
+layer = -1
+script = ExtResource("1_xy1bg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1doum")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="Control/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(900, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ColorRect/VBoxContainer/BoxContainer3"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "[center][b]Where was Jimmy The Knife?[/b][/center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="KoboldCafeButton" type="Button" parent="Control/ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Kobold Cafe"
+
+[node name="NothingSandwich" type="Button" parent="Control/ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Coming SOON"
+
+[node name="Nothing2Sandwich" type="Button" parent="Control/ColorRect/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "Coming SOON"
+
+[node name="BackButton" type="Button" parent="Control/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+text = "BACK"
+
+[connection signal="pressed" from="Control/ColorRect/VBoxContainer/HBoxContainer/KoboldCafeButton" to="." method="_on_kobold_cafe_button_pressed"]
+[connection signal="pressed" from="Control/ColorRect/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

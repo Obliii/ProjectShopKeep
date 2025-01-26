@@ -1,4 +1,5 @@
 extends Node
+class_name MenuManager
 
 @onready var title_screen: CanvasLayer = $TitleScreen
 @onready var level_selection_screen: CanvasLayer = $LevelSelectionScreen

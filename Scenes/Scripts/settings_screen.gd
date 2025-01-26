@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var main_slider = $Control/ColorRect/VBoxContainer/MainVolume/MainVolumeSlider
 @onready var music_slider = $Control/ColorRect/VBoxContainer/MusicVolume/MusicSlider
 @onready var sound_slider = $Control/ColorRect/VBoxContainer/SoundVolume/SoundSlider
-@onready var game_instance = get_parent()
+@onready var game_instance: MenuManager = get_parent()
 var main_index = AudioServer.get_bus_index("Master")
 var music_index = AudioServer.get_bus_index("Music")
 var sound_index = AudioServer.get_bus_index("Sound")

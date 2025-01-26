@@ -29,9 +29,12 @@ bus = &"Sound"
 [node name="TitleScreen" parent="." instance=ExtResource("4_insjs")]
 
 [node name="SettingsScreen" parent="." node_paths=PackedStringArray("overlay_screen") instance=ExtResource("5_i6lyk")]
+visible = false
 overlay_screen = NodePath("../OverlayScreen")
 
 [node name="LevelSelectionScreen" parent="." instance=ExtResource("5_dw3aa")]
+layer = 3
+visible = false
 
 [node name="PauseScreen" type="Node2D" parent="."]
 process_mode = 2
