@@ -22,8 +22,9 @@ func fire_primary_weapon(direction: Vector2):
 
 	var new_bullet: Bullet = BULLET_SCENE.instantiate()
 	new_bullet.bullet_data = weapon_data.bullet_data
-	new_bullet.global_position = entity.position + (direction)
+	new_bullet.global_position = entity.position + direction
 	new_bullet.direction = direction
+	new_bullet.shooter = owner
 	get_tree().get_root().add_child(new_bullet)
 	
 	ready_to_fire = false
@@ -41,7 +42,6 @@ func show_weapon(value):
 	showing_weapon = value
 	weapon_sprite.visible = value
 
-# TODO: ROTATE CHARACTER TOWARDS PLAYER TO FOLLOW THE MOUSE. No upside down gun.
 func rotate_weapon(direction: Vector2):
 	weapon_sprite.look_at(direction)
 	

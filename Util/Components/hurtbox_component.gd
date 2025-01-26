@@ -5,9 +5,13 @@ signal hitbox_struck
 
 @export var damage_component: DamageComponent
 
+var entity_blacklist: Array[PhysicsBody2D]
+
 func _on_area_entered(area: Area2D) -> void:
-	print("HITBOX HIT")
 	if owner.is_queued_for_deletion():
+		return
+	
+	if area.owner in entity_blacklist:
 		return
 	
 	if area is HitboxComponent:
