@@ -17,8 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SettingsManager="*res://Util/Autoload/settings_manager.gd"
-SignalBus="*res://Util/Autoload/SignalBus.gd"
+Main="*res://Scenes/Scripts/main.gd"
 
 [display]
 
@@ -43,6 +42,11 @@ folder_colors={
 "res://UI/": "pink",
 "res://Util/": "gray"
 }
+
+[gui]
+
+theme/custom="res://knife_project_theme.tres"
+theme/default_font_antialiasing=2
 
 [input]
 
