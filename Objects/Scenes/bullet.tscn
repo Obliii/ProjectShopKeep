@@ -1,30 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5pdn6smfx07d"]
+[gd_scene load_steps=11 format=3 uid="uid://b5pdn6smfx07d"]
 
-[ext_resource type="Script" path="res://Objects/Scenes/bullet.gd" id="1_5mfph"]
-[ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="1_u2d2b"]
+[ext_resource type="Script" path="res://Objects/Scripts/bullet.gd" id="1_5mfph"]
 [ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="2_26abk"]
-[ext_resource type="Script" path="res://Util/Components/AttackComponent.gd" id="3_7d682"]
+[ext_resource type="Script" path="res://Util/Classes/bullet_data.gd" id="2_unaqr"]
+[ext_resource type="Script" path="res://Util/Components/DamageComponent.gd" id="4_175fl"]
+[ext_resource type="Script" path="res://Util/Components/hurtbox_component.gd" id="5_ji8yq"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgqn8"]
+
+[sub_resource type="Resource" id="Resource_0hc58"]
+script = ExtResource("2_unaqr")
+damage = 0
+speed = 150
+armor_piercing = 0
+texture = SubResource("PlaceholderTexture2D_sgqn8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaiu"]
+size = Vector2(5, 5)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8atkw"]
+size = Vector2(17, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f0fh"]
 
 [node name="Bullet" type="StaticBody2D"]
+collision_layer = 0
 script = ExtResource("1_5mfph")
+bullet_data = SubResource("Resource_0hc58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7xaiu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="HitboxComponent" type="Area2D" parent="."]
-script = ExtResource("1_u2d2b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("RectangleShape2D_8f0fh")
-debug_color = Color(0.85648, 0, 0.0131668, 0.42)
+texture = SubResource("PlaceholderTexture2D_8atkw")
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("2_26abk")
 entity = NodePath("..")
 
-[node name="AttackComponent" type="Node" parent="." node_paths=PackedStringArray("move_component", "hitbox_component", "sprite")]
-script = ExtResource("3_7d682")
-move_component = NodePath("../MoveComponent")
-hitbox_component = NodePath("../HitboxComponent")
-sprite = NodePath("../Sprite2D")
+[node name="DamageComponent" type="Node" parent="."]
+script = ExtResource("4_175fl")
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_component")]
+collision_layer = 0
+script = ExtResource("5_ji8yq")
+damage_component = NodePath("../DamageComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_8f0fh")
+debug_color = Color(0.85648, 0, 0.0131668, 0.42)
+
+[connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]
+[connection signal="body_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_body_entered"]
+[connection signal="hitbox_struck" from="HurtboxComponent" to="." method="_on_hurtbox_component_hitbox_struck"]
