@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3 uid="uid://cvd5kqwgcxouv"]
-
-[ext_resource type="Script" path="res://Util/Classes/weapondata.gd" id="1_1lmeu"]
-
-[resource]
-script = ExtResource("1_1lmeu")
-attack_speed = 0
-damage = 0

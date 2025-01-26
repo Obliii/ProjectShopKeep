@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="BulletData" load_steps=2 format=3 uid="uid://dove15tgh2cs6"]
-
-[ext_resource type="Script" path="res://Util/Classes/bullet_data.gd" id="1_ovi0c"]
-
-[resource]
-script = ExtResource("1_ovi0c")
-damage = 10
-speed = 150

@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://byuumahg4pwlh"]
-
-[node name="Game Screen" type="Node2D"]
-
-[node name="MapContainer" type="Node" parent="."]
-
-[node name="Entities" type="Node" parent="."]
