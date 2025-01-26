@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj76riaad0qv4"]
+
+[ext_resource type="Script" path="res://Util/Autoload/menu_manager.gd" id="1_ebsa7"]
+[ext_resource type="PackedScene" uid="uid://cbhx0pqmbtmao" path="res://Scenes/title_screen.tscn" id="4_insjs"]
+[ext_resource type="AudioStream" uid="uid://dmirb4n07l6rq" path="res://Sound/Music/Title Screen.wav" id="4_y6dbp"]
+[ext_resource type="PackedScene" uid="uid://drx1hbvf3fkl4" path="res://Scenes/settings_screen.tscn" id="5_i6lyk"]
+[ext_resource type="PackedScene" uid="uid://byuumahg4pwlh" path="res://Scenes/game_screen.tscn" id="6_083t3"]
+[ext_resource type="PackedScene" uid="uid://dxulr5b5seuhk" path="res://Scenes/overlay_screen.tscn" id="7_so7io"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ebsa7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Camera2D"]
+position = Vector2(-576, -324)
+stream = ExtResource("4_y6dbp")
+autoplay = true
+bus = &"Music"
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="Camera2D"]
+position = Vector2(-576, -324)
+max_polyphony = 10
+bus = &"Sound"
+
+[node name="TitleScreen" parent="." instance=ExtResource("4_insjs")]
+
+[node name="SettingsScreen" parent="." node_paths=PackedStringArray("overlay_screen") instance=ExtResource("5_i6lyk")]
+overlay_screen = NodePath("../OverlayScreen")
+
+[node name="PauseScreen" type="Node2D" parent="."]
+process_mode = 2
+
+[node name="GameScreen" parent="." instance=ExtResource("6_083t3")]
+
+[node name="OverlayScreen" parent="." instance=ExtResource("7_so7io")]
+process_mode = 3
