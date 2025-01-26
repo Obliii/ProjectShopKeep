@@ -40,7 +40,7 @@ func take_damage(value, ap_value):
 		damage_value = 1
 	
 	# Deal damage to the character.
-	health - damage_value
+	health -= damage_value
 	health_changed.emit()
 
 # Deals flat damage that is unaffected by armor.

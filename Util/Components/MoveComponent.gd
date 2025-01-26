@@ -2,14 +2,14 @@ extends Node
 class_name MoveComponent
 
 @export var entity: PhysicsBody2D
-@export var base_speed: int = 100
+@export var base_speed: float = 100
 
 # Dashing params
 @export var max_dash_time: float = 0.2
 @export var dash_cooldown: float = 0.5
 @export var dash_multiplier: int = 2
 
-var speed: int
+var speed: float
 var can_dash: bool = true
 
 func _ready():

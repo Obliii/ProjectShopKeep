@@ -151,7 +151,7 @@ _data = {
 radius = 20.0
 height = 90.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 1
 collision_layer = 19
 collision_mask = 161
@@ -200,7 +200,7 @@ MAX_HEALTH = 10
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_78r04")
 entity = NodePath("..")
-base_speed = 270
+base_speed = 270.0
 dash_multiplier = 3
 
 [node name="WeaponComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite")]
