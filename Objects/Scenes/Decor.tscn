@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4eyc31vfyfit"]
+
+[ext_resource type="Texture2D" uid="uid://dioq22j51es0f" path="res://Art/kobold_motel_assets.png" id="1_sq0iw"]
+
+[node name="Decor" type="Sprite2D"]
+texture = ExtResource("1_sq0iw")
+region_enabled = true
+region_rect = Rect2(584.475, 327.159, 14.4542, 21.2476)
