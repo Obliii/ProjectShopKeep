@@ -16,3 +16,4 @@ class_name EnemyStats
 # Possibly? Loot Table drops?
 
 # Starting Weapon
+@export var weapon_data: WeaponData

@@ -8,13 +8,34 @@ class_name PlayerControllerComponent
 
 # Other
 @export var animated_sprite: AnimatedSprite2D
-@export var character_body: CharacterBody2D 
+@export var character_body: CharacterBody2D
+@export var player_sprite: Sprite2D
+
+var flip: bool = false:
+	set(value):
+		if(flip != value):
+			player_sprite.scale.x *= -1
+			flip = value
 
 func _physics_process(delta: float) -> void:
+	set_sprite_visuals()
 	move_character(delta)
 	fire_weapon()
 	dash()
 	activate_ability()
+
+func get_mouse_direction() -> Vector2:
+	return (character_body.get_global_mouse_position() - character_body.position).normalized()
+
+func set_sprite_visuals() -> void:
+	var mouse_position: Vector2 = get_mouse_direction()
+	weapon_component.rotate_weapon(character_body.get_global_mouse_position())
+	
+	if mouse_position.x > 0:
+		flip = false
+	elif mouse_position.x < 0:
+		flip = true
+	
 
 # Moves the character!
 func move_character(delta):
@@ -24,8 +45,7 @@ func move_character(delta):
 
 # Fires the weapons with Left Click or Right Click.
 func fire_weapon():
-	var mouse_position: Vector2 = character_body.get_global_mouse_position()
-	weapon_component.rotate_weapon(mouse_position)
+	var mouse_position: Vector2 = get_mouse_direction()
 	
 	# If the mouse is being fire in it's direction. If not, then fire in the direction that the player is facing.
 	if Input.is_action_pressed("move_shootprimary") and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

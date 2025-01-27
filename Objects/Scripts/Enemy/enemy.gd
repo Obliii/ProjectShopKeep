@@ -4,6 +4,8 @@ class_name Enemy
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var move_component: MoveComponent = $MoveComponent
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var weapon_component: WeaponComponent = $WeaponComponent
 
 @export var stats : EnemyStats
 
@@ -15,3 +17,15 @@ func _ready() -> void:
 	health_component.reset_health()
 	
 	sprite_2d.texture = stats.texture
+	
+	weapon_component.weapon_data = stats.weapon_data
+
+func _on_health_component_health_changed() -> void:
+	# Some sort of damage effect
+	animation_player.play("damaged")
+	pass
+
+
+func _on_health_component_killed() -> void:
+	#maybe make some death effects
+	queue_free()
