@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cj2qdkf3oml0j"]
+
+[ext_resource type="Script" path="res://Util/Classes/weapondata.gd" id="1_icvlt"]
+[ext_resource type="Resource" uid="uid://dove15tgh2cs6" path="res://Resources/Bullet/Rocket.tres" id="1_r8v7m"]
+
+[resource]
+script = ExtResource("1_icvlt")
+attack_speed = 0.5
+bullet_data = ExtResource("1_r8v7m")
+ai_attack_range = 0
+bullet_offset = Vector2(12, -4)

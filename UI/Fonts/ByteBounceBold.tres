@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bj0bxk3p6nfq6"]
+
+[ext_resource type="FontFile" uid="uid://baj71wewjj0gu" path="res://UI/Fonts/ByteBounce.ttf" id="1_a81ai"]
+
+[resource]
+base_font = ExtResource("1_a81ai")
+spacing_glyph = 2
+spacing_top = 1
