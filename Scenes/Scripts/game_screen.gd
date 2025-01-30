@@ -21,3 +21,10 @@ func load_new_map(new_packed_scene: PackedScene):
 	var result: PackedScene = ResourceLoader.load(new_packed_scene.resource_path)
 	result.instantiate()
 	return result
+
+func clear_current_map():
+	for entry in get_children():
+		for entry_children in entry.get_children():
+			entry_children.queue_free()
+		entry.queue_free()
+		print("Deleting: %s" %entry)
