@@ -21,23 +21,20 @@ func goto_main_menu():
 
 # Switches the screen. Unpauses if the gameplay is back on.
 func switch_screen(screen, force = false) -> void:
-	if screen == pause_screen:
-		get_tree().paused = true
-	if screen == gameplay_screen:
-		get_tree().paused = false
-	
-	if hidable_screen():
+	if hidable_screen() or force:
 		await overlay_screen.hide_screen(true)
 		current_screen.visible = false
 	
 	current_screen = screen
 	
-	if hidable_screen():
+	if hidable_screen() or force:
 		current_screen.visible = true
 		await overlay_screen.hide_screen(false)
-	
-	if force:
-		await overlay_screen.hide_screen(false)
+		
+	if screen == pause_screen:
+		get_tree().paused = true
+	if screen == gameplay_screen:
+		get_tree().paused = false
 
 func close_all_ui():
 	title_screen.visible = false

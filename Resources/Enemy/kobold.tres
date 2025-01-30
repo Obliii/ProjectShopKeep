@@ -11,7 +11,7 @@ size = Vector2(5, 5)
 [sub_resource type="Resource" id="Resource_l2qgf"]
 script = ExtResource("3_6llb3")
 damage = 10
-speed = 40
+speed = 100
 armor_piercing = 0
 texture = SubResource("PlaceholderTexture2D_1koju")
 

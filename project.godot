@@ -113,11 +113,12 @@ move_shootsecondary={
 2d_navigation/layer_4="Obstruction"
 2d_physics/layer_5="NPC"
 2d_navigation/layer_5="HazardZone"
-2d_physics/layer_6="Projectile"
+2d_physics/layer_6="FriendlyProjectile"
 2d_navigation/layer_6="Character"
-2d_physics/layer_7="HitMarker"
+2d_physics/layer_7="EnemyProjectile"
 2d_navigation/layer_7="Player"
-2d_physics/layer_8="Interactable"
+2d_physics/layer_9="HitMarker"
+2d_physics/layer_10="Interactable"
 
 [rendering]
 
