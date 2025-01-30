@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpawnEntity" load_steps=3 format=3 uid="uid://dlpgxfmg0udm"]
+
+[ext_resource type="Resource" uid="uid://dfg7xrv4s6bnd" path="res://Resources/Enemy/kobold.tres" id="1_5ypko"]
+[ext_resource type="Script" path="res://Util/Enemy/spawn_entity.gd" id="2_u2qkk"]
+
+[resource]
+script = ExtResource("2_u2qkk")
+enemy_data = ExtResource("1_5ypko")
+max_spawn = 40
+starting_spawn = 10
+time_between_spawns = 5
+min_spawn_count = 2
+max_spawn_count = 5
+spawn_cost_per = 1

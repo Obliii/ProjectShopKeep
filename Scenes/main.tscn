@@ -39,8 +39,8 @@ visible = false
 [node name="PauseScreen" type="Node2D" parent="."]
 process_mode = 2
 
-[node name="GameScreen" parent="." instance=ExtResource("6_083t3")]
-process_mode = 1
+[node name="GameScreen" parent="." node_paths=PackedStringArray("game_overlay") instance=ExtResource("6_083t3")]
+game_overlay = NodePath("../OverlayScreen")
 
 [node name="OverlayScreen" parent="." instance=ExtResource("7_so7io")]
 process_mode = 3

@@ -62,8 +62,11 @@ func activate_ability():
 func dash():
 	if Input.is_action_just_pressed("move_dash") and move_component.can_dash and animation_component.can_animate:
 		move_component.dash()
-		animation_component.start_animation("stab", true, false)
-
+		if flip:
+			animation_component.start_animation("stab_left", true, false)
+		else:
+			animation_component.start_animation("stab_right", true, false)
+			
 # Causes the entity to have a walking animation if applicable.
 func play_movement_animation(vec):
 	if vec != Vector2.ZERO and animation_component.can_animate:

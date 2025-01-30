@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=8 format=3 uid="uid://dfg7xrv4s6bnd"]
+
+[ext_resource type="Script" path="res://Util/Enemy/enemy_stats.gd" id="1_rcujr"]
+[ext_resource type="Texture2D" uid="uid://de2smfch6hec0" path="res://Art/lizord.png" id="2_qch3n"]
+[ext_resource type="Script" path="res://Util/Classes/bullet_data.gd" id="3_6llb3"]
+[ext_resource type="Script" path="res://Util/Classes/weapondata.gd" id="4_kqcbn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1koju"]
+size = Vector2(5, 5)
+
+[sub_resource type="Resource" id="Resource_l2qgf"]
+script = ExtResource("3_6llb3")
+damage = 10
+speed = 40
+armor_piercing = 0
+texture = SubResource("PlaceholderTexture2D_1koju")
+
+[sub_resource type="Resource" id="Resource_ljdfl"]
+script = ExtResource("4_kqcbn")
+attack_speed = 1.5
+bullet_data = SubResource("Resource_l2qgf")
+ai_attack_range = 450
+bullet_offset = Vector2(0, 0)
+
+[resource]
+script = ExtResource("1_rcujr")
+texture = ExtResource("2_qch3n")
+max_health = 20.0
+max_speed = 70.0
+variation_range = 10.0
+acceleration_time = 2.5
+friction = 1.0
+weapon_data = SubResource("Resource_ljdfl")

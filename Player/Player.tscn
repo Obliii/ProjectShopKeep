@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://c7tsadhldfn73"]
+[gd_scene load_steps=22 format=3 uid="uid://c7tsadhldfn73"]
 
 [ext_resource type="Script" path="res://Util/Components/PlayerControllerComponent.gd" id="1_0rycc"]
-[ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_wvvkb"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_wvvkb"]
 [ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="2_efg57"]
 [ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="3_78r04"]
 [ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="3_griiw"]
@@ -11,10 +11,15 @@
 [ext_resource type="Resource" uid="uid://cj2qdkf3oml0j" path="res://Resources/Weapon/rocket_launcher.tres" id="6_i48t3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_75t3x"]
-radius = 20.0
+radius = 18.0
 height = 90.0
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k571f"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4uone"]
+radius = 5.5
+height = 19.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v48w8"]
+height = 124.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_de877"]
 
@@ -122,7 +127,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_1iq4g"]
-resource_name = "stab"
+resource_name = "stab_right"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -137,6 +142,22 @@ tracks/0/keys = {
 "values": [1.22173, 1.5708, 1.5708, 0.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_7px3o"]
+resource_name = "stab_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PlayerSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.22173, -1.5708, -1.5708, 0.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iprak"]
 _data = {
 "RESET": SubResource("Animation_k3ngo"),
@@ -144,12 +165,9 @@ _data = {
 "bounce": SubResource("Animation_eusvf"),
 "idle": SubResource("Animation_wxsce"),
 "spin": SubResource("Animation_r222d"),
-"stab": SubResource("Animation_1iq4g")
+"stab_left": SubResource("Animation_7px3o"),
+"stab_right": SubResource("Animation_1iq4g")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v48w8"]
-radius = 20.0
-height = 90.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 1
@@ -175,10 +193,24 @@ texture = ExtResource("6_7ma1w")
 region_enabled = true
 region_rect = Rect2(35, 22, 44, 20)
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerSprite/WeaponSprite"]
-position = Vector2(11.8519, -3.25926)
-scale = Vector2(8.1, 9.3)
-texture = SubResource("PlaceholderTexture2D_k571f")
+[node name="BladeHitbox" type="Area2D" parent="PlayerSprite"]
+position = Vector2(-0.333333, 0)
+script = ExtResource("3_griiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/BladeHitbox"]
+position = Vector2(0.333333, -6.33333)
+scale = Vector2(1, 1.62667)
+shape = SubResource("CapsuleShape2D_4uone")
+
+[node name="KnifeHitbox" type="Area2D" parent="PlayerSprite"]
+scale = Vector2(0.333333, 0.333333)
+collision_layer = 96
+collision_mask = 96
+script = ExtResource("3_griiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/KnifeHitbox"]
+shape = SubResource("CapsuleShape2D_v48w8")
+debug_color = Color(0.990775, 0, 0.209004, 0.42)
 
 [node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("move_component", "weapon_component", "animation_component", "animated_sprite", "character_body", "player_sprite")]
 script = ExtResource("1_0rycc")
@@ -194,13 +226,13 @@ sprite_frames = SubResource("SpriteFrames_de877")
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hitbox_component")]
 script = ExtResource("2_efg57")
-hitbox_component = NodePath("../HitboxComponent")
+hitbox_component = NodePath("../PlayerSprite/KnifeHitbox")
 MAX_HEALTH = 10
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_78r04")
 entity = NodePath("..")
-base_speed = 270.0
+base_speed = 400.0
 dash_multiplier = 3
 
 [node name="WeaponComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite")]
@@ -208,23 +240,15 @@ script = ExtResource("4_kjhky")
 weapon_data = ExtResource("6_i48t3")
 weapon_sprite = NodePath("../PlayerSprite/WeaponSprite")
 
-[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
+[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("animation_player", "weapon_component")]
 script = ExtResource("5_no6ea")
 animation_player = NodePath("AnimationPlayer")
+weapon_component = NodePath("../WeaponComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationComponent"]
 libraries = {
 "": SubResource("AnimationLibrary_iprak")
 }
 
-[node name="HitboxComponent" type="Area2D" parent="."]
-collision_layer = 96
-collision_mask = 96
-script = ExtResource("3_griiw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("CapsuleShape2D_v48w8")
-debug_color = Color(0.990775, 0, 0.209004, 0.42)
-
+[connection signal="body_entered" from="PlayerSprite/KnifeHitbox" to="PlayerSprite/KnifeHitbox" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationComponent/AnimationPlayer" to="AnimationComponent" method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]

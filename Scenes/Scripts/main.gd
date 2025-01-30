@@ -9,4 +9,5 @@ var audio_sound: AudioStreamPlayer2D
 
 # Game Instance
 var game_playing: bool
+var game_paused: bool
 var selected_difficulty: Difficulty

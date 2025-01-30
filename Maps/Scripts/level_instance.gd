@@ -3,22 +3,76 @@ class_name LevelInstance
 
 @export var level_data: LevelData
 @onready var entity_container = $Entities
+@onready var entity_spawners = $EnemySpawners
+@onready var tilemaps = $TileMaps
+@onready var player_spawn = $PlayerSpawner
+@onready var enemy_object = preload("res://Objects/Scenes/enemy.tscn")
 var enemy_spawn_point: Array
 var enemies_remaining: int
-var projected_enemies: int
+var remaining_budget: int
+
+func _ready():
+	init_level()
 
 func init_level():
-	enemies_remaining = level_data.projected_enemies * Main.selected_difficulty
-	projected_enemies = 0
-	Main.audio_music.stream = level_data.level_music
-
-func spawn_enemy():
-	pass
-
-# Clear all entities.
-func clear_all_entities(include_player = false):
+	# Randomize Seed and setup the map with all of its spawn points.
+	randomize()
+	init_timer()
+	remaining_budget = level_data.default_spawn_budget * 1
+	enemies_remaining = 0
 	for entity in entity_container.get_children():
-		if entity is Player and !include_player:
-			pass
+		++enemies_remaining
+	for spawn_point in entity_spawners.get_children():
+		if spawn_point is Node2D:
+			enemy_spawn_point.append(spawn_point)
+	if Main.audio_music:
+		Main.audio_music.stream = level_data.level_music
+		Main.audio_music.play()
+	if Main.player_character:
+		Main.player_character.global_position = player_spawn.global_position
+	hide_debug(true)
+
+func spawn_random_enemy():
+	var random_enemy = randi() % level_data.enemy_types.size()
+	var random_spawn_point = randi() % enemy_spawn_point.size()
+	var min_spawn_count = level_data.enemy_types[random_enemy].min_spawn_count
+	var max_spawn_count = level_data.enemy_types[random_enemy].max_spawn_count
+	var budget_cost = level_data.enemy_types[random_enemy].spawn_cost_per
+	var spawn_time = level_data.enemy_types[random_enemy].time_between_spawns
+	var amount_to_spawn = randi_range(min_spawn_count, max_spawn_count)
+	var successful_spawn := false
+	
+	for n in amount_to_spawn:
+		if remaining_budget >= budget_cost:
+			remaining_budget -= budget_cost
+			var new_enemy: Enemy = enemy_object.instantiate()
+			new_enemy.stats = level_data.enemy_types[random_enemy].enemy_data
+			new_enemy.global_position = enemy_spawn_point[random_spawn_point].global_position
+			entity_container.add_child(new_enemy)
+			++enemies_remaining
+			successful_spawn = true
+			await get_tree().create_timer(1.5, false).timeout
+	if budget_cost <= 0:
+		return
+	elif successful_spawn:
+		start_new_spawn_timer(spawn_time)
+	else:
+		spawn_random_enemy()
+	
+# Clear all entities.
+func clear_all_entities():
+	for entity in entity_container.get_children():
 		entity.queue_free()
 	enemies_remaining = 0
+
+func init_timer():
+	get_tree().create_timer(5, false)
+	start_new_spawn_timer()
+
+func start_new_spawn_timer(value = 2):
+	await get_tree().create_timer(value, false).timeout
+	spawn_random_enemy()
+
+func hide_debug(value: bool):
+	if value:
+		player_spawn.visible = false

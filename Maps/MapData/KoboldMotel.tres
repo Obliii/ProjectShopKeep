@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=5 format=3 uid="uid://p0ya8sw5ybut"]
+
+[ext_resource type="Script" path="res://Util/Enemy/spawn_entity.gd" id="1_7r8mj"]
+[ext_resource type="Script" path="res://Util/Classes/level_data.gd" id="2_6stxs"]
+[ext_resource type="Resource" uid="uid://dlpgxfmg0udm" path="res://Resources/EntitySpawnDictionary/koboldspawner.tres" id="2_8g6r5"]
+[ext_resource type="AudioStream" uid="uid://c0gx6gn4vq4s0" path="res://Sound/Music/jimmy the knife.wav" id="3_sr34q"]
+
+[resource]
+script = ExtResource("2_6stxs")
+level_name = "Kobold Motel"
+level_music = ExtResource("3_sr34q")
+enemy_types = Array[ExtResource("1_7r8mj")]([ExtResource("2_8g6r5")])
+default_spawn_budget = 100

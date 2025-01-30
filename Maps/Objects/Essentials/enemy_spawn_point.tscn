@@ -8,5 +8,6 @@ size = Vector2(15, 15)
 [node name="EnemySpawnPoint" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = SubResource("PlaceholderTexture2D_omt23")
 script = ExtResource("1_2lmo7")
