@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://dfrh5j4206eq3"]
+[gd_scene load_steps=12 format=4 uid="uid://dfrh5j4206eq3"]
 
 [ext_resource type="Script" path="res://Maps/Scripts/level_instance.gd" id="1_j70l8"]
 [ext_resource type="TileSet" uid="uid://mw3dn8ptcghi" path="res://Util/TileSheet/kobold_motel_tileset.tres" id="2_bt2sb"]
 [ext_resource type="Script" path="res://Util/Enemy/spawn_entity.gd" id="2_p6jeo"]
 [ext_resource type="Resource" uid="uid://dlpgxfmg0udm" path="res://Resources/EntitySpawnDictionary/koboldspawner.tres" id="3_03o5t"]
-[ext_resource type="PackedScene" uid="uid://c7tsadhldfn73" path="res://Player/Player.tscn" id="3_domqi"]
 [ext_resource type="AudioStream" uid="uid://c0gx6gn4vq4s0" path="res://Sound/Music/jimmy the knife.wav" id="3_mek2p"]
 [ext_resource type="Script" path="res://Util/Classes/level_data.gd" id="4_5ohm4"]
 [ext_resource type="PackedScene" uid="uid://eh6l32pdswk1" path="res://Maps/Objects/Essentials/enemy_spawn_point.tscn" id="7_vh5ha"]
@@ -49,6 +48,3 @@ stats = ExtResource("9_w6hq7")
 position = Vector2(575, 323)
 scale = Vector2(50, 50)
 texture = SubResource("PlaceholderTexture2D_e2fyp")
-
-[node name="Player" parent="." instance=ExtResource("3_domqi")]
-position = Vector2(433, 250)

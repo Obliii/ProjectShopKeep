@@ -16,7 +16,6 @@ script = ExtResource("1_ebsa7")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
-position_smoothing_speed = 2.0
 script = ExtResource("2_n7gmw")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Camera2D"]

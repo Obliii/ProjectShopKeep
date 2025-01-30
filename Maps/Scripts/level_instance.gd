@@ -30,6 +30,7 @@ func init_level():
 		Main.audio_music.play()
 	if Main.player_character:
 		Main.player_character.global_position = player_spawn.global_position
+	Main.game_playing = true
 	hide_debug(true)
 
 func spawn_random_enemy():
