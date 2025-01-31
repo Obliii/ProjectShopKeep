@@ -45,8 +45,7 @@ func dash():
 		move_component.dash()
 
 func ai_in_range() -> bool:
-	return false
-	#return enemy.position.distance_to(player.position) < weapon_component.weapon_data.ai_attack_range
+	return enemy.position.distance_to(player.position) < weapon_component.weapon_data.ai_attack_range
 
 func player_direction() -> Vector2:
 	return (player.global_position - enemy.global_position).normalized()

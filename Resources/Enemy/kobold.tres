@@ -24,7 +24,7 @@ texture = SubResource("AtlasTexture_ahu6x")
 script = ExtResource("4_kqcbn")
 attack_speed = 1.5
 bullet_data = SubResource("Resource_l2qgf")
-ai_attack_range = 450
+ai_attack_range = 300
 bullet_offset = Vector2(0, 0)
 
 [resource]
