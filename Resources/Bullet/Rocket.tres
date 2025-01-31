@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="BulletData" load_steps=3 format=3 uid="uid://dove15tgh2cs6"]
+[gd_resource type="Resource" script_class="BulletData" load_steps=4 format=3 uid="uid://dove15tgh2cs6"]
 
 [ext_resource type="Script" path="res://Util/Classes/bullet_data.gd" id="1_ovi0c"]
+[ext_resource type="Texture2D" uid="uid://qxg1b4xv7sxk" path="res://Art/tileset_mobs.png" id="2_tu76h"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g2glm"]
-size = Vector2(5, 5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2bg"]
+atlas = ExtResource("2_tu76h")
+region = Rect2(3.15604, 40.4464, 24.2265, 16.3265)
 
 [resource]
 script = ExtResource("1_ovi0c")
 damage = 10
 speed = 600
 armor_piercing = 0
-texture = SubResource("PlaceholderTexture2D_g2glm")
+texture = SubResource("AtlasTexture_7c2bg")
