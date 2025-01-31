@@ -16,8 +16,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		# We need to check only if we're looking at a hitbox
 		var area_groups: Array[StringName] = area.owner.get_groups()
-		print(group_blacklist)
-		print(area_groups)
 		for group in group_blacklist:
 			if group in area_groups:
 				return

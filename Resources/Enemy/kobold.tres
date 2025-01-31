@@ -16,7 +16,7 @@ region = Rect2(5.31272, 74.2647, 20.8558, 11.5866)
 [sub_resource type="Resource" id="Resource_l2qgf"]
 script = ExtResource("3_6llb3")
 damage = 1
-speed = 100
+speed = 150
 armor_piercing = 0
 texture = SubResource("AtlasTexture_ahu6x")
 
@@ -31,7 +31,7 @@ bullet_offset = Vector2(0, 0)
 script = ExtResource("1_rcujr")
 texture = SubResource("AtlasTexture_adt8v")
 max_health = 20.0
-max_speed = 70.0
+max_speed = 100.0
 variation_range = 10.0
 acceleration_time = 2.5
 friction = 1.0
