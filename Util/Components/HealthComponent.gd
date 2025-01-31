@@ -60,6 +60,5 @@ func heal(value):
 
 # A signal fired when the entity's health changes.
 func _on_health_changed(_value):
-	print("Checking for %s" %name)
 	if health <= 0:
 		killed.emit()

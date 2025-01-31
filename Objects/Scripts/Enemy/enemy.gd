@@ -27,5 +27,4 @@ func _on_health_changed(_new_health: int) -> void:
 
 func _on_health_component_killed() -> void:
 	#maybe make some death effects
-	print("Killing Enemy.")
 	queue_free()

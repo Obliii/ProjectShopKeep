@@ -11,7 +11,6 @@ var enemy_spawn_point: Array
 var enemies_remaining: int
 var remaining_budget: int
 signal enemy_spawned(value)
-signal enemy_killed
 
 func _ready():
 	init_level()
