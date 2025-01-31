@@ -171,8 +171,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 1
-collision_layer = 19
-collision_mask = 161
+collision_layer = 0
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_wvvkb")
@@ -198,6 +197,7 @@ region_rect = Rect2(35, 22, 44, 20)
 
 [node name="BladeHitbox" type="Area2D" parent="PlayerSprite"]
 position = Vector2(-0.333333, 0)
+collision_layer = 0
 script = ExtResource("3_griiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/BladeHitbox"]

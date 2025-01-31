@@ -25,7 +25,10 @@ func _ready() -> void:
 	
 	sprite_2d.texture = bullet_data.texture
 	
-	hurtbox_component.entity_blacklist.append(shooter)
+	if direction: 
+		sprite_2d.look_at(position + direction)
+	
+	hurtbox_component.group_blacklist = shooter.get_groups()
 	
 	# Remove yourself after the bullet timeout elapses
 	get_tree().create_timer(BULLET_TIMEOUT).timeout.connect(queue_free)
