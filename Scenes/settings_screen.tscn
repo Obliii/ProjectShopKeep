@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://ccgqjg61ykiio" path="res://knife_project_theme.tres" id="1_o02sa"]
 
 [node name="SettingsScreen" type="CanvasLayer"]
-layer = 0
 follow_viewport_enabled = true
 script = ExtResource("1_fhynk")
 

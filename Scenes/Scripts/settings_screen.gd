@@ -34,6 +34,6 @@ func _on_leave_settings_button_pressed() -> void:
 		push_error("Overlay screen not set in settings screen.")
 		return
 	if Main.game_playing:
-		game_instance.switch_screen(game_instance.gameplay_screen)
+		game_instance.switch_screen(game_instance.pause_screen, true)
 	else:
 		game_instance.switch_screen(game_instance.title_screen)

@@ -14,7 +14,9 @@ var can_dash: bool = true
 
 func _ready():
 	reset_speed()
-	
+	if entity.has_method("floor_stop_on_slope"):
+		entity.floor_stop_on_slope = false
+		
 func reset_speed() -> void:
 	speed = base_speed
 

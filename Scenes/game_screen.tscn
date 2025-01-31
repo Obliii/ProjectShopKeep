@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://byuumahg4pwlh"]
+[gd_scene load_steps=2 format=3 uid="uid://byuumahg4pwlh"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/game_screen.gd" id="1_m7hae"]
 
 [node name="Game Screen" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_m7hae")
 
 [node name="MapContainer" type="Node" parent="."]
 

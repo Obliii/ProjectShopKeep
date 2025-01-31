@@ -1,46 +1,61 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj76riaad0qv4"]
+[gd_scene load_steps=12 format=3 uid="uid://cj76riaad0qv4"]
 
 [ext_resource type="Script" path="res://Util/Autoload/menu_manager.gd" id="1_ebsa7"]
+[ext_resource type="Script" path="res://Objects/Scripts/camera_follower.gd" id="2_n7gmw"]
 [ext_resource type="PackedScene" uid="uid://cbhx0pqmbtmao" path="res://Scenes/title_screen.tscn" id="4_insjs"]
 [ext_resource type="AudioStream" uid="uid://dmirb4n07l6rq" path="res://Sound/Music/Title Screen.wav" id="4_y6dbp"]
 [ext_resource type="PackedScene" uid="uid://bvcfn578ap3x8" path="res://Scenes/level_selection_screen.tscn" id="5_dw3aa"]
 [ext_resource type="PackedScene" uid="uid://drx1hbvf3fkl4" path="res://Scenes/settings_screen.tscn" id="5_i6lyk"]
 [ext_resource type="PackedScene" uid="uid://byuumahg4pwlh" path="res://Scenes/game_screen.tscn" id="6_083t3"]
+[ext_resource type="PackedScene" uid="uid://sortnpx1353h" path="res://Scenes/pause_screen.tscn" id="7_sgdi6"]
 [ext_resource type="PackedScene" uid="uid://dxulr5b5seuhk" path="res://Scenes/overlay_screen.tscn" id="7_so7io"]
+[ext_resource type="PackedScene" uid="uid://c7tsadhldfn73" path="res://Player/Player.tscn" id="8_lvn34"]
+[ext_resource type="PackedScene" uid="uid://3a3uqobboeyl" path="res://Scenes/hud_screen.tscn" id="9_a516h"]
 
 [node name="Game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_ebsa7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+script = ExtResource("2_n7gmw")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Camera2D"]
-position = Vector2(-576, -324)
 stream = ExtResource("4_y6dbp")
 autoplay = true
 bus = &"Music"
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="Camera2D"]
-position = Vector2(-576, -324)
 max_polyphony = 10
 bus = &"Sound"
 
 [node name="TitleScreen" parent="." instance=ExtResource("4_insjs")]
+follow_viewport_enabled = false
 
 [node name="SettingsScreen" parent="." node_paths=PackedStringArray("overlay_screen") instance=ExtResource("5_i6lyk")]
 visible = false
+follow_viewport_enabled = false
 overlay_screen = NodePath("../OverlayScreen")
 
 [node name="LevelSelectionScreen" parent="." instance=ExtResource("5_dw3aa")]
 layer = 3
 visible = false
 
-[node name="PauseScreen" type="Node2D" parent="."]
+[node name="PauseScreen" parent="." instance=ExtResource("7_sgdi6")]
 process_mode = 2
-
-[node name="GameScreen" parent="." instance=ExtResource("6_083t3")]
-process_mode = 1
+layer = 1
+visible = false
 
 [node name="OverlayScreen" parent="." instance=ExtResource("7_so7io")]
 process_mode = 3
+follow_viewport_enabled = false
+
+[node name="HudScreen" parent="." instance=ExtResource("9_a516h")]
+layer = 0
+
+[node name="GameScreen" parent="." node_paths=PackedStringArray("game_overlay") instance=ExtResource("6_083t3")]
+game_overlay = NodePath("../OverlayScreen")
+
+[node name="Player" parent="." instance=ExtResource("8_lvn34")]
+scale = Vector2(0.5, 0.5)
