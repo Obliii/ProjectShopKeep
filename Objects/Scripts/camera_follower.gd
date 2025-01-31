@@ -4,7 +4,7 @@ extends Camera2D
 func _ready() -> void:
 	Main.main_camera = self
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player_character and Main.game_playing:
 		global_position = player_character.global_position
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cj76riaad0qv4"]
+[gd_scene load_steps=12 format=3 uid="uid://cj76riaad0qv4"]
 
 [ext_resource type="Script" path="res://Util/Autoload/menu_manager.gd" id="1_ebsa7"]
 [ext_resource type="Script" path="res://Objects/Scripts/camera_follower.gd" id="2_n7gmw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://sortnpx1353h" path="res://Scenes/pause_screen.tscn" id="7_sgdi6"]
 [ext_resource type="PackedScene" uid="uid://dxulr5b5seuhk" path="res://Scenes/overlay_screen.tscn" id="7_so7io"]
 [ext_resource type="PackedScene" uid="uid://c7tsadhldfn73" path="res://Player/Player.tscn" id="8_lvn34"]
+[ext_resource type="PackedScene" uid="uid://3a3uqobboeyl" path="res://Scenes/hud_screen.tscn" id="9_a516h"]
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -52,6 +53,9 @@ visible = false
 [node name="OverlayScreen" parent="." instance=ExtResource("7_so7io")]
 process_mode = 3
 follow_viewport_enabled = false
+
+[node name="HudScreen" parent="." instance=ExtResource("9_a516h")]
+layer = 0
 
 [node name="GameScreen" parent="." node_paths=PackedStringArray("game_overlay") instance=ExtResource("6_083t3")]
 game_overlay = NodePath("../OverlayScreen")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dfrh5j4206eq3"]
+[gd_scene load_steps=10 format=4 uid="uid://dfrh5j4206eq3"]
 
 [ext_resource type="Script" path="res://Maps/Scripts/level_instance.gd" id="1_j70l8"]
 [ext_resource type="TileSet" uid="uid://mw3dn8ptcghi" path="res://Util/TileSheet/kobold_motel_tileset.tres" id="2_bt2sb"]
@@ -7,8 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://c0gx6gn4vq4s0" path="res://Sound/Music/jimmy the knife.wav" id="3_mek2p"]
 [ext_resource type="Script" path="res://Util/Classes/level_data.gd" id="4_5ohm4"]
 [ext_resource type="PackedScene" uid="uid://eh6l32pdswk1" path="res://Maps/Objects/Essentials/enemy_spawn_point.tscn" id="7_vh5ha"]
-[ext_resource type="PackedScene" uid="uid://dvr2mp0h3ex8q" path="res://Objects/Scenes/enemy.tscn" id="8_d1osj"]
-[ext_resource type="Resource" uid="uid://dfg7xrv4s6bnd" path="res://Resources/Enemy/kobold.tres" id="9_w6hq7"]
 
 [sub_resource type="Resource" id="Resource_gp4eg"]
 script = ExtResource("4_5ohm4")
@@ -34,15 +32,16 @@ tile_set = ExtResource("2_bt2sb")
 [node name="EnemySpawnPoint" parent="EnemySpawners" instance=ExtResource("7_vh5ha")]
 position = Vector2(121, 502)
 
+[node name="EnemySpawnPoint2" parent="EnemySpawners" instance=ExtResource("7_vh5ha")]
+position = Vector2(1005, 68)
+
+[node name="EnemySpawnPoint3" parent="EnemySpawners" instance=ExtResource("7_vh5ha")]
+position = Vector2(248, 61)
+
+[node name="EnemySpawnPoint4" parent="EnemySpawners" instance=ExtResource("7_vh5ha")]
+position = Vector2(970, 555)
+
 [node name="Entities" type="Node" parent="."]
-
-[node name="Enemy" parent="Entities" instance=ExtResource("8_d1osj")]
-position = Vector2(120, 359)
-stats = ExtResource("9_w6hq7")
-
-[node name="Enemy2" parent="Entities" instance=ExtResource("8_d1osj")]
-position = Vector2(1000, 481)
-stats = ExtResource("9_w6hq7")
 
 [node name="PlayerSpawner" type="Sprite2D" parent="."]
 position = Vector2(575, 323)

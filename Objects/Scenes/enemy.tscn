@@ -95,6 +95,6 @@ libraries = {
 [node name="WeaponComponent" type="Node" parent="."]
 script = ExtResource("8_7wx4y")
 
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
-[connection signal="health_changed" from="HealthComponent" to="HealthComponent" method="_on_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]

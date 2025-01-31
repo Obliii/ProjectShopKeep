@@ -10,9 +10,12 @@ class_name LevelInstance
 var enemy_spawn_point: Array
 var enemies_remaining: int
 var remaining_budget: int
+signal enemy_spawned(value)
+signal enemy_killed
 
 func _ready():
 	init_level()
+	Main.current_level = self
 
 func init_level():
 	# Randomize Seed and setup the map with all of its spawn points.
@@ -21,7 +24,7 @@ func init_level():
 	remaining_budget = level_data.default_spawn_budget * 1
 	enemies_remaining = 0
 	for entity in entity_container.get_children():
-		++enemies_remaining
+		enemies_remaining += 1
 	for spawn_point in entity_spawners.get_children():
 		if spawn_point is Node2D:
 			enemy_spawn_point.append(spawn_point)
@@ -50,15 +53,15 @@ func spawn_random_enemy():
 			new_enemy.stats = level_data.enemy_types[random_enemy].enemy_data
 			new_enemy.global_position = enemy_spawn_point[random_spawn_point].global_position
 			entity_container.add_child(new_enemy)
-			++enemies_remaining
+			enemies_remaining += 1
+			enemy_spawned.emit(enemies_remaining)
 			successful_spawn = true
 			await get_tree().create_timer(1.5, false).timeout
-	if budget_cost <= 0:
-		return
-	elif successful_spawn:
+	if successful_spawn and remaining_budget >= 1:
 		start_new_spawn_timer(spawn_time)
+		print("new budget: %s" %remaining_budget)
 	else:
-		spawn_random_enemy()
+		return
 	
 # Clear all entities.
 func clear_all_entities():

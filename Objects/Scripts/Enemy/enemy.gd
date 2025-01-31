@@ -20,12 +20,12 @@ func _ready() -> void:
 	
 	weapon_component.weapon_data = stats.weapon_data
 
-func _on_health_component_health_changed() -> void:
+func _on_health_changed(_new_health: int) -> void:
 	# Some sort of damage effect
-	animation_player.play("damaged")
-	pass
-
+	if animation_player:
+		animation_player.play("damaged")
 
 func _on_health_component_killed() -> void:
 	#maybe make some death effects
+	print("Killing Enemy.")
 	queue_free()

@@ -11,6 +11,7 @@ var jimmy_the_knife_music = load("res://Sound/Music/jimmy the knife.wav")
 @onready var gameplay_screen: Node2D = $GameScreen
 @onready var pause_screen: CanvasLayer = $PauseScreen
 @onready var overlay_screen: CanvasLayer = $OverlayScreen
+@onready var hud_screen: CanvasLayer = $HudScreen
 var current_screen = title_screen
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 	PauseManager.menu_manager = self
 	Main.audio_music = $Camera2D/MusicPlayer
 	Main.audio_sound = $Camera2D/SoundPlayer
+	hud_screen.setup_screen()
 
 func goto_main_menu():
 	Main.main_camera.global_position = Main.main_menu_position

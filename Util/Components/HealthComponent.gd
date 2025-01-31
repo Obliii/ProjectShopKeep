@@ -11,7 +11,7 @@ class_name HealthComponent
 var health: int
 var armor: int
 
-signal health_changed
+signal health_changed(new_health: int)
 signal killed
 
 func _ready():
@@ -19,11 +19,14 @@ func _ready():
 	# Make this into a for loop if changed into an array
 	if hitbox_component:
 		hitbox_component.damaged.connect(_attacked)
+	
 	reset_health()
 	armor = BASE_ARMOR
+	health_changed.connect(_on_health_changed)
 	
 func reset_health() -> void:
 	health = MAX_HEALTH
+	health_changed.emit(health)
 
 func _attacked(attack: Attack) -> void:
 	take_damage(attack.damage, attack.armor_piercing)
@@ -41,21 +44,22 @@ func take_damage(value, ap_value):
 	
 	# Deal damage to the character.
 	health -= damage_value
-	health_changed.emit()
+	health_changed.emit(health)
 
 # Deals flat damage that is unaffected by armor.
 func take_flat_damage(value):
 	health -= value
-	health_changed.emit()
+	health_changed.emit(health)
 
 # Heals the entity.
 func heal(value):
 	health += value
 	if health > MAX_HEALTH:
 		health = MAX_HEALTH
-	health_changed.emit()
+	health_changed.emit(health)
 
 # A signal fired when the entity's health changes.
-func _on_health_changed():
+func _on_health_changed(_value):
+	print("Checking for %s" %name)
 	if health <= 0:
 		killed.emit()
