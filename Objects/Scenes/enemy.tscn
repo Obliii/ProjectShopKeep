@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Util/Components/WeaponComponent.gd" id="8_7wx4y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lp263"]
+radius = 15.0
+height = 40.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o75to"]
 resource_local_to_scene = true
@@ -71,10 +73,11 @@ entity = NodePath("..")
 script = ExtResource("3_cmuor")
 hitbox_component = NodePath("../HitboxComponent")
 
-[node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("move_component", "weapon_component")]
+[node name="AIComponent" type="Node" parent="." node_paths=PackedStringArray("move_component", "weapon_component", "navigation_agent_2d")]
 script = ExtResource("7_wua5t")
 move_component = NodePath("../MoveComponent")
 weapon_component = NodePath("../WeaponComponent")
+navigation_agent_2d = NodePath("../NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_o75to")
@@ -88,6 +91,7 @@ script = ExtResource("4_cndou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CapsuleShape2D_lp263")
+debug_color = Color(3.56168e-06, 0.641334, 0.335962, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -97,6 +101,13 @@ libraries = {
 [node name="WeaponComponent" type="Node" parent="."]
 script = ExtResource("8_7wx4y")
 
-[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 100.0
+avoidance_layers = 8
+avoidance_mask = 8
+debug_enabled = true
+
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]
 [connection signal="killed" from="HealthComponent" to="." method="_on_health_component_killed"]
