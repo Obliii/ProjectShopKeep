@@ -1338,37 +1338,37 @@ region_rect = Rect2(637.901, 384.347, 34.2331, 27.3865)
 [node name="EnemySpawners" type="Node" parent="."]
 
 [node name="EnemySpawnPoint" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(608, 17)
+position = Vector2(608, 19)
 
 [node name="EnemySpawnPoint2" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(800, 14)
+position = Vector2(801, 20)
 
 [node name="EnemySpawnPoint3" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(994, 16)
+position = Vector2(992, 19)
 
 [node name="EnemySpawnPoint4" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(1278, 115)
+position = Vector2(1281, 118)
 
 [node name="EnemySpawnPoint5" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(1377, 113)
+position = Vector2(1377, 117)
 
 [node name="EnemySpawnPoint6" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
 position = Vector2(896, 692)
 
 [node name="EnemySpawnPoint7" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(704, 691)
+position = Vector2(704, 693)
 
 [node name="EnemySpawnPoint8" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(351, 689)
+position = Vector2(352, 691)
 
 [node name="EnemySpawnPoint9" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(162, 689)
+position = Vector2(162, 692)
 
 [node name="EnemySpawnPoint10" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(-97, 498)
+position = Vector2(-96, 501)
 
 [node name="EnemySpawnPoint11" parent="EnemySpawners" instance=ExtResource("3_eypr5")]
-position = Vector2(-98, 18)
+position = Vector2(-95, 23)
 
 [node name="Entities" type="Node" parent="."]
 

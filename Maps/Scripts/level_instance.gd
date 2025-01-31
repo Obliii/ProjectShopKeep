@@ -58,7 +58,6 @@ func spawn_random_enemy():
 			await get_tree().create_timer(1.5, false).timeout
 	if successful_spawn and remaining_budget >= 1:
 		start_new_spawn_timer(spawn_time)
-		print("new budget: %s" %remaining_budget)
 	else:
 		return
 	
