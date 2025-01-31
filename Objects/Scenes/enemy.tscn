@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Util/Components/MoveComponent.gd" id="2_0fh7r"]
 [ext_resource type="Script" path="res://Util/Components/HealthComponent.gd" id="3_cmuor"]
 [ext_resource type="Script" path="res://Util/Components/HitboxComponent.gd" id="4_cndou"]
-[ext_resource type="Texture2D" uid="uid://de2smfch6hec0" path="res://Art/lizord.png" id="5_8avre"]
 [ext_resource type="Shader" path="res://Util/Shaders/damage.gdshader" id="7_rqipx"]
 [ext_resource type="Script" path="res://Util/Components/AIComponent.gd" id="7_wua5t"]
 [ext_resource type="Script" path="res://Util/Components/WeaponComponent.gd" id="8_7wx4y"]
@@ -15,6 +14,9 @@
 resource_local_to_scene = true
 shader = ExtResource("7_rqipx")
 shader_parameter/quantity = 0.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fbwof"]
+size = Vector2(25, 25)
 
 [sub_resource type="Animation" id="Animation_u2swb"]
 length = 0.001
@@ -76,8 +78,7 @@ weapon_component = NodePath("../WeaponComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_o75to")
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_8avre")
+texture = SubResource("PlaceholderTexture2D_fbwof")
 flip_h = true
 
 [node name="HitboxComponent" type="Area2D" parent="."]
