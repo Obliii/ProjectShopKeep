@@ -1,25 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://dfrh5j4206eq3"]
+[gd_scene load_steps=6 format=4 uid="uid://dfrh5j4206eq3"]
 
 [ext_resource type="Script" path="res://Maps/Scripts/level_instance.gd" id="1_j70l8"]
 [ext_resource type="TileSet" uid="uid://mw3dn8ptcghi" path="res://Util/TileSheet/kobold_motel_tileset.tres" id="2_bt2sb"]
-[ext_resource type="Script" path="res://Util/Enemy/spawn_entity.gd" id="2_p6jeo"]
-[ext_resource type="Resource" uid="uid://dlpgxfmg0udm" path="res://Resources/EntitySpawnDictionary/koboldspawner.tres" id="3_03o5t"]
-[ext_resource type="AudioStream" uid="uid://c0gx6gn4vq4s0" path="res://Sound/Music/jimmy the knife.wav" id="3_mek2p"]
-[ext_resource type="Script" path="res://Util/Classes/level_data.gd" id="4_5ohm4"]
+[ext_resource type="Resource" uid="uid://bpiahu5nrm2of" path="res://Maps/MapData/Level1.tres" id="2_syr2e"]
 [ext_resource type="PackedScene" uid="uid://eh6l32pdswk1" path="res://Maps/Objects/Essentials/enemy_spawn_point.tscn" id="7_vh5ha"]
-
-[sub_resource type="Resource" id="Resource_gp4eg"]
-script = ExtResource("4_5ohm4")
-level_name = "Kobold Motel"
-level_music = ExtResource("3_mek2p")
-enemy_types = Array[ExtResource("2_p6jeo")]([ExtResource("3_03o5t")])
-default_spawn_budget = 25
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e2fyp"]
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_j70l8")
-level_data = SubResource("Resource_gp4eg")
+level_data = ExtResource("2_syr2e")
 
 [node name="TileMaps" type="Node" parent="."]
 

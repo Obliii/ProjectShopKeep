@@ -235,7 +235,7 @@ MAX_HEALTH = 10
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("3_78r04")
 entity = NodePath("..")
-base_speed = 400.0
+base_speed = 250.0
 dash_multiplier = 3
 
 [node name="WeaponComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_sprite")]

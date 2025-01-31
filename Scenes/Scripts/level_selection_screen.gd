@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var game_instance: MenuManager = get_parent()
-@onready var kobold_motel_map = load("res://Maps/LevelTemplate.tscn")
+@onready var kobold_motel_map = load("res://Maps/level_1.tscn")
 
 
 func _on_kobold_cafe_button_pressed() -> void:
